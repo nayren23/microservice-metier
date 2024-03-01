@@ -6,10 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @RestController
 public class AnnonceController {
-
 
     private final AnnonceService annonceService;
 
@@ -19,8 +20,7 @@ public class AnnonceController {
     }
 
     @GetMapping("/annonce/display")
-    public String getAllAnnonces() {
+    public List<Map<String, Objects>> getAllAnnonces() {
         return annonceService.getAllAnnonces();
     }
-
 }

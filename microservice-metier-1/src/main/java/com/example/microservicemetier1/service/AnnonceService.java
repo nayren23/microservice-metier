@@ -1,33 +1,24 @@
 package com.example.microservicemetier1.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.client.RestTemplate;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class AnnonceService {
 
-    @Autowired
-    private WebClient.Builder webClientBuilder;
-
+    private RestTemplate restTemplate;
     private String url;
 
     public AnnonceService() {
-        this.webClientBuilder = WebClient.builder();
+        this.restTemplate = new RestTemplate();
         this.url = "http://localhost:8080/";;
     }
 
-    public String getAllAnnonces() {
-
-        String announces = webClientBuilder.build()
-                .get()
-                .uri(this.url+"annonce/display")
-                .retrieve()
-                .bodyToMono(String.class)
-                .block();
+    public List<Map<String, Objects>> getAllAnnonces() {
+        List<Map<String, Objects>> announces = this.restTemplate.getForObject(this.url + "annonce/display", List.class);
         return announces;
     }
-
-
-
 }
