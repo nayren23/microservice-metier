@@ -13,6 +13,8 @@ public class MicroserviceMetier1Application {
 
     public static void main(String[] args) {
         SpringApplication.run(MicroserviceMetier1Application.class, args);
+
+        // Juste pour le test
         AnnonceService annonceService = new AnnonceService();
         String annonces = annonceService.getAllAnnonces();
         System.out.println("-----------------------------------------------------------------");

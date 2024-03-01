@@ -10,16 +10,18 @@ public class AnnonceService {
     @Autowired
     private WebClient.Builder webClientBuilder;
 
+    private String url;
+
     public AnnonceService() {
-        this.webClientBuilder = WebClient.builder();;
+        this.webClientBuilder = WebClient.builder();
+        this.url = "http://localhost:8080/";;
     }
 
     public String getAllAnnonces() {
-        String url = "http://localhost:8080/";
 
         String announces = webClientBuilder.build()
                 .get()
-                .uri(url+"annonce/display")
+                .uri(this.url+"annonce/display")
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
