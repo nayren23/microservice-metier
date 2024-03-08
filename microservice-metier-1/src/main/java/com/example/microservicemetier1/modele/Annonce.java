@@ -15,9 +15,6 @@ public class Annonce {
 
     private LocalDate date;
 
-    public Annonce() {
-    }
-
     public Annonce(String title, String description, String address, String mail, LocalDate date) {
         this.title = title;
         this.description = description;
