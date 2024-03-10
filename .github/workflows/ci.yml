@@ -35,7 +35,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./microservice-metier/microservice-metier-1
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ env.LATEST_TAG }}
